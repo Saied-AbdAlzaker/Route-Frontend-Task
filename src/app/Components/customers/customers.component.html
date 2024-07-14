@@ -1,0 +1,55 @@
+<section>
+    <div class="container">
+        <div class="shadow-sm p-3 text-center">
+            <h3>Customers</h3>
+        </div>
+        <!-- Search -->
+        <div class="table-card container py-5">
+            <div class="bg-whiteColor p-3">
+                <div class="w-100">
+                    <input [(ngModel)]="searchItem" type="text" placeholder="Serach By Name......" class="form-control">
+                </div>
+            </div>
+        </div>
+        <!-- display customers  -->
+        <table class="table table-striped">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Transactions Date</th>
+                <th>Transactions Amount</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableCustomers|search:searchItem">
+                    <td>{{ item?.id }}</td>
+                    <td>{{ item?.name }}</td>
+                    <td>{{ tableTransactions?.date | date : "dd-MM-yyyy" }}</td>
+                    <td>{{ tableTransactions?.amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- chart -->
+    <div class="row mt-5 text-center bg-info p-3">
+        <div class="col-md-6">
+            <div class="chart-item bg-itemTwo">
+                <div class="chart-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h5 class="my-3">Amount</h5>
+                <span>{{tableTransactions}}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <div class="chart-card">
+                  <h3>Progress</h3>
+                  <p>Lorem ipsum dolor sit amet,consecteture</p>
+                  <div class="w-50 mx-auto">
+                    <canvas id="canvas">{{chart}}</canvas>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
